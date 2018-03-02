@@ -5,7 +5,7 @@ require_once("./motores/interno/validador.php");
 require_once("./motores/interno/formatos.php");
 require_once("./motores/interno/defs.php");
 require_once("./motores/interno/MasterCat.class.php");
-$catalogo = new Catalogo('concepto', "P", null, "form-control");	//Sirve para crear el arreglo de la tabla principal
+$catalogo = new Catalogo('empresa', "P", null, "form-control");	//Sirve para crear el arreglo de la tabla principal
 //La siguiente línea define un catálogo detalle, asignar el nombre de la tabla y descomentariar para usar
 ?>
 <!DOCTYPE html>

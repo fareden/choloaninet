@@ -72,23 +72,40 @@ if (!$hayUsuario) {
 		</script>
 	</head>
 	<body class="fixed-footer">
-		<nav class="navbar navbar-ct-blue navbar-fixed-top navbar-transparent" role="navigation">
-			<div class="container">
-				<div class="navbar-header">
-					<img src="img/logo-largo.png">
+		<header>
+			<nav id="herramientas" class="navbar navbar-toggleable-md navbar-light bg-faded"  style="background-color: rgba(105, 100, 100, 0.73); height:120px;">
+				<!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#opciones" aria-controls="opciones" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<a class="navbar-brand" href="#"><img src="img/logo-small.png" alt="logo"></a>
+				<div id="opciones" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="nav-item"><a class="nav-link" href="registro.php">REGISTRARSE</a></li>
+						<li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#firmado">INICIAR SESIÓN</a></li>
+					</ul>
+				</div>-->
+				<div class="container">
+					<!--<div class="row">-->
+						<div class="col-md-8 col-sm-12 col-xs-12">
+							<a class="navbar-brand" href="#"><img src="img/logo-small.png" alt="logo"></a>
+						</div>
+						<div class="col-md-2 col-sm-6">
+							<a class="text-white pull-right hidden-xs hidden-sm" href="registro.php">REGISTRARSE</a>
+							<a class="text-white pull-left hidden-lg hidden-md" href="registro.php">REGISTRARSE</a>
+						</div>
+						<div class="col-md-2 col-sm-6">
+							<a class="text-white pull-right " href="#" data-toggle="modal" data-target="#firmado">INICIAR SESIÓN</a>
+						</div>
+					<!--</div>-->
 				</div>
-				<ul class="nav navbar-nav">
-					<li><a href="registro.php">REGISTRARSE</a></li>
-					<li><a href="#" data-toggle="modal" data-target="#firmado">INICIAR SESIÓN</a></li>
-				</ul>
-			</div>
-		</nav>
+			</nav>
+		</header>
 		<!-- Intro Section -->
 		<section class="intro" style="background-image: url(img/fondo.jpg);">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-10 col-sm-12 col-xs-12">
-						<img src="img/logo-fondo.png" />
+						<!--<img src="img/logo-fondo.png" />-->
 					</div>
 				</div>
 				<div class="row">
@@ -152,7 +169,7 @@ if (!$hayUsuario) {
 		<!-- Footer -->
 		<!-- Javascript (jQuery) Libraries and Plugins -->
 		<script src="js/popper.js"></script>
-		<script src="js/plugins/bootstrap.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
 	</body>
 </html>
 <?php

@@ -45,7 +45,7 @@ if (!$hayUsuario) {
 			}
 			function firmado(event){
 				//alert(event.keyCode);
-				if(event.keyCode == 13 || event.keyCode == undefined){
+				if(event == undefined || event.keyCode == 13){
 					$.ajax({
 						url : './motores/hanumat.php',
 						type : 'post',

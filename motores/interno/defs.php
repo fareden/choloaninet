@@ -1,6 +1,6 @@
 <?php
-//const TIPOS_IMAGEN = array("image/jpeg", "image/gif", "image/png");
-//const TIPOS_DOCUMENTO = array("application/pdf");
+$TIPOS_IMAGEN = array("image/jpeg", "image/gif", "image/png");
+$TIPOS_DOCUMENTO = array("application/pdf");
 const PRODUCCION = FALSE;
 
 define("SECRETO_RECAPTCHA", "6LcQ5goTAAAAAEME6Vv_58-2tMZMnhHTEa4qZHOe");

@@ -1,7 +1,7 @@
 <?php
 require_once("./motores/interno/defs.php");
 session_start();
-$hayUsuario = (isset($_SESSION['Usuario']) && $_SESSION['Usuario']['rol'] != 't');
+$hayUsuario = (isset($_SESSION['Usuario']) && !($_SESSION['Usuario']['rol'] == 't' || $_SESSION['Usuario']['rol'] == 'n'));
 if (!$hayUsuario) {
 	$_SESSION['Usuario'] = array("rol" => "t", "publica" => "invalida");
 	?>
@@ -43,39 +43,72 @@ if (!$hayUsuario) {
 				//limpiaDers();
 				return false;
 			}
-			function firmado() {
-				$.ajax({
-					url : './motores/hanumat.php',
-					type : 'post',
-					dataType : 'JSON',
-					data : {
-						r : 'l',
-						usr : $("#usuario").val(),
-						pwd : $("#pwd").val()
-					}
-				}).done(function(r) {
-					if (r.error == '0') {
-						window.location.href = "./" + r.pagina;
-					} else {
-						$("#mensaje").html("<div class='alert alert-danger'>"+r.errmsg+" intente nuevamente</div>");
-						setTimeout(function(){
-							 $("#mensaje").html('');
-						}, 4000);
-					}
-				});
-				return false;
+			function firmado(event){
+				//alert(event.keyCode);
+				if(event.keyCode == 13 || event.keyCode == undefined){
+					$.ajax({
+						url : './motores/hanumat.php',
+						type : 'post',
+						dataType : 'JSON',
+						data : {
+							r : 'l',
+							usr : $("#usuario").val(),
+							pwd : $("#pwd").val()
+						}
+					}).done(function(r) {
+						if (r.error == '0') {
+							window.location.href = "./" + r.pagina;
+						} else {
+							console.log(r);
+							$("#mensaje").html("<div class='alert alert-danger' style='background-color: #e54343;color: #fff;'><strong>"+r.errmsg+" intente nuevamente</strong></div>");
+							setTimeout(function(){
+								$("#mensaje").html('');
+							}, 4000);
+						}
+					});
+					return false;
+				}
 			}
 		</script>
 	</head>
 	<body class="fixed-footer">
+		<nav class="navbar navbar-ct-blue navbar-fixed-top navbar-transparent" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<img src="img/logo-largo.png">
+				</div>
+				<ul class="nav navbar-nav">
+					<li><a href="registro.php">REGISTRARSE</a></li>
+					<li><a href="#" data-toggle="modal" data-target="#firmado">INICIAR SESIÓN</a></li>
+				</ul>
+			</div>
+		</nav>
+		<!-- Intro Section -->
+		<section class="intro" style="background-image: url(img/fondo.jpg);">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-10 col-sm-12 col-xs-12">
+						<img src="img/logo-fondo.png" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8 col-lg-8 col-sm-12 col-xs-12" id="divOfertas">
+						<!-- Ofertas listadas -->
+					</div>
+					<div class="col-md-4 col-lg-4 col-s hidden-sm-down" id="divNube">
+						<!-- nube de palabras -->
+					</div>
+				</div>
+			</div>
+		</section><!-- Intro Section End -->
 		<!--Modal (Signin/Signup Page)-->
-		<div class="modal fade" id="signin-page">
+		<div class="modal fade" id="firmado">
 			<div class="modal-dialog">
 				<div class="container">
 					<div class="modal-form">
 						<div class="tab-content">
 							<!-- Sign in form -->
-							<form class="tab-pane transition scale fade in active" id="signin-form" autocomplete="off">
+							<form class="tab-pane transition scale fade in active" id="signin-form" autocomplete="off" onkeypress="firmado(event)">
 								<input type="hidden" value="l" name="r" />
 								<center><img src="img/logo-big.png" alt="" height="100%" width="100">
 									<h3 class="modal-title">Iniciar Sesión</h3>
@@ -100,7 +133,7 @@ if (!$hayUsuario) {
 									<button type="button" class="btn-round btn-ghost btn-danger pull-left" data-dismiss="modal">
 										<i class="flaticon-cross37"></i>
 									</button>
-									<button type="button" value="enviar" onclick="firmado()" class="btn-round btn-ghost btn-success pull-right">
+									<button type="button" value="enviar" onclick="firmado(undefined)" class="btn-round btn-ghost btn-success pull-right">
 										<i class="flaticon-correct7"></i>
 									</button>
 								</div>
@@ -116,36 +149,15 @@ if (!$hayUsuario) {
 				</div>
 			</div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
-		<!-- Intro Section -->
-		<section class="intro" style="background-image: url(img/intro/intro-bg.jpg);">
-			<div class="gradient"></div>
-			<div class="container">
-				<div class="column-wrap">
-					<!-- Middle Column-->
-					<div class="column c-middle" style="width: 80%; vertical-align: middle;">
-						<h1 class="logo"><img src="img/logo-big.png" alt="">CholoaniNET</h1>
-					</div>
-					<!-- Right Column-->
-					<div class="column c-right">
-						<!-- Navi -->
-						<div class="navi">
-							<a href="#" data-toggle="modal" data-target="#signin-page">Iniciar Sesión</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section><!-- Intro Section End -->
 		<!-- Footer -->
 		<!-- Javascript (jQuery) Libraries and Plugins -->
 		<script src="js/popper.js"></script>
 		<script src="js/plugins/bootstrap.min.js"></script>
-		<script src="js/plugins/jquery.magnific-popup.min.js"></script>
 	</body>
 </html>
 <?php
 } else {
-header('Status: 301 Moved Permanently', false, 301);
-header('Location: ./' . $_SESSION['Usuario']['pag_inicial']);
-
+	header('Status: 301 Moved Permanently', false, 301);
+	header('Location: ./' . $_SESSION['Usuario']['pag_inicial']);
 }
 ?>

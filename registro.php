@@ -1,9 +1,10 @@
 <?php
 session_start();
 require_once("./motores/interno/funciones.php");
-//require_once("./motores/interno/MasterCat.class.php");
+require_once("./motores/interno/MasterCat.class.php");
 //require_once("./motores/interno/validador.php");
 $_SESSION['Usuario'] = array("rol" => "n", "publica" => "nuevotemporal");
+$migrante = new Catalogo("migrante", "P", null, "form-control");
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,7 +52,8 @@ $_SESSION['Usuario'] = array("rol" => "n", "publica" => "nuevotemporal");
 							setTimeout(function(){
 								window.location.href = 'index.php';
 							}, 3000);
-						}else if (r.error == '2') {
+						}else {
+							alert(r.errmsg);
 							$("#mensaje").html("<div class='alert alert-danger'> Algo salió mal... </div>");
 							setTimeout(function(){
 								$("#mensaje").html('');
@@ -94,7 +96,7 @@ $_SESSION['Usuario'] = array("rol" => "n", "publica" => "nuevotemporal");
 											<tbody>
 												<tr>
 													<td>Correo electrónico:</td>
-													<td><input class="form-control" type="email" id="idu" name="correo" /></td>
+													<td><input class="form-control" type="email" id="idu" name="idu" /></td>
 												</tr>
 												<tr>
 													<td>Contraseña:</td>
@@ -113,15 +115,25 @@ $_SESSION['Usuario'] = array("rol" => "n", "publica" => "nuevotemporal");
 												</tr>
 												<tr>
 													<td>Apellido paterno:</td>
-													<td><input type="text" id="nom" maxlength="200" name="ap" /></td>
+													<td><input type="text" id="app" maxlength="200" name="ap" /></td>
 												</tr>
 												<tr>
 													<td>Apellido materno:</td>
-													<td><input type="text" id="nom" maxlength="200" name="am" /></td>
+													<td><input type="text" id="apm" maxlength="200" name="am" /></td>
 												</tr>
 												<tr>
 													<td>Fecha de nacimiento:</td>
 													<td><input type="date" name="fn" /></td>
+												</tr>
+												<tr>
+													<td>Sexo:</td>
+													<td>
+														<select name="sx">
+															<option value="-1">-- Seleccione uno --</option>
+															<option value="Hombre">Hombre</option>
+															<option value="Mujer">Mujer</option>
+														</select>
+													</td>
 												</tr>
 											</tbody>
 										</table>

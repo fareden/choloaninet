@@ -13,4 +13,16 @@ function dameMenuApp() {
 	</ul>';
 	return $retval;
 }
+
+function dameMenuMigrante() {
+	$retval = '<ul class="nav navbar-nav navbar-right">
+		<li class="nav-item"><a class="nav-link" href="landing.php"> <i class="material-icons">home</i> </a></li>
+		<li class="nav-item"><a class="nav-link" href="emprende.php">Emprender</a></li>
+		<li class="nav-item"><a class="nav-link" href="cv.php">Generar Currículum</a></li>
+		<li class="nav-item"><a class="nav-link" href="mensajes.php">Mensajes</a></li>
+		<li class="nav-item"><a class="nav-link" href="perfil.php">Mi cuenta</a></li>
+		<li class="nav-item"><a class="nav-link" href="#" onclick="doLogout()">Salir</a></li>
+	</ul>';
+	return $retval;
+}
 ?>

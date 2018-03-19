@@ -24,6 +24,7 @@ if (!$hayUsuario) {
 		<!--CSS-->
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/personalizado.css" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 		<link rel="stylesheet" href="css/jquery-ui.min.css" />
 		<script type="text/javascript">
@@ -70,10 +71,12 @@ if (!$hayUsuario) {
 				}
 			}
 		</script>
+		<style>
+		</style>
 	</head>
 	<body class="fixed-footer">
 		<header>
-			<nav id="herramientas" class="navbar navbar-toggleable-md navbar-light bg-faded"  style="background-color: rgba(105, 100, 100, 0.73); height:120px;">
+			<nav id="herramientas" class="navbar navbar-toggleable-md"  style="background-color: rgba(50, 47, 47, 0.73); height:120px;">
 				<!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#opciones" aria-controls="opciones" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -100,24 +103,85 @@ if (!$hayUsuario) {
 				</div>
 			</nav>
 		</header>
+		
 		<!-- Intro Section -->
-		<section class="intro" style="background-image: url(img/fondo.jpg);">
+		<section class="intro" style="background-image: url(img/fondo2.jpg); min-height: 60%;"></section>
+			
+		</section>
+		<!-- Intro Section End -->
+		<section style="position:fixed; z-index:1;min-width:100%; margin-top:30px;">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-10 col-sm-12 col-xs-12">
-						<!--<img src="img/logo-fondo.png" />-->
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-8 col-lg-8 col-sm-12 col-xs-12" id="divOfertas">
-						<!-- Ofertas listadas -->
-					</div>
-					<div class="col-md-4 col-lg-4 col-s hidden-sm-down" id="divNube">
-						<!-- nube de palabras -->
+					<div class="col-md-10 col-sm-12 col-md-offset-1">
+						<div class="row rounded fondo-gris1">
+							<div class=" rounded" style="background-color: rgba(50, 47, 47, 0.73); margin:8px;">
+								<div class="col-md-8 col-sm-12 col-md-offset-2" style="margin-top:40px;">
+									<img src="img/logo-largo.png" class="img-fluid">
+									<h3 class="text-center" style="color:#eaa704;">¡Bienvenid@!</h3>
+									<p class="text-white text-center">Ayudando a dar la bienvenida a nuestros talentos que regresan</p>
+								</div>
+							</div>
+						</div>
+						<div class="row" >
+							<div class="col-md-7 col-sm-12 mt-2 ">
+								<!--Vista web-->
+								<div class="row hidden-sm hidden-xs">
+									<div class="fondo-gris1  rounded" style="width:98%;">
+										<h5 class="text-center mt-4">Oferta de trabajo postulada</h5> 
+										<p style="margin:12px;" class="text-justify">
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque viverra vel purus vitae blandit. Vestibulum aliquet eget massa sed faucibus. Praesent rutrum in diam non venenatis. Nullam rutrum finibus risus eget facilisis. Sed vehicula non massa id bibendum. Nunc et aliquam nisi. Cras egestas metus porttitor, iaculis ex a, rutrum diam. Aliquam a ornare nibh. Integer lobortis nunc et porttitor rhoncus. Curabitur non tellus non dui varius consectetur varius a arcu. Curabitur a luctus odio, sit amet accumsan lorem. 
+										</p>
+									</div>
+									<div class="fondo-gris1 mt-2 rounded mr-2" style="width:48%;">
+										<h5 class="text-center mt-4">Oferta de trabajo postulada</h5> 
+										<p style="margin:12px;" class="text-justify" >
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque viverra vel purus vitae blandit. Vestibulum aliquet eget massa sed faucibus. Praesent rutrum in diam non venenatis. Nullam rutrum finibus risus eget facilisis. Sed vehicula non massa id bibendum. Nunc et aliquam nisi. Cras egestas metus porttitor, iaculis ex a, rutrum diam. Aliquam a ornare nibh. Integer lobortis nunc et porttitor rhoncus. Curabitur non tellus non dui varius consectetur varius a arcu. Curabitur a luctus odio, sit amet accumsan lorem. 
+										</p>
+									</div>
+									<div class="fondo-gris1 mt-2 rounded" style="width:48%;">
+										<h5 class="text-center mt-4 ">Oferta de trabajo postulada</h5> 
+										<p style="margin:12px;" class="text-justify">
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque viverra vel purus vitae blandit. Vestibulum aliquet eget massa sed faucibus. Praesent rutrum in diam non venenatis. Nullam rutrum finibus risus eget facilisis. Sed vehicula non massa id bibendum. Nunc et aliquam nisi. Cras egestas metus porttitor, iaculis ex a, rutrum diam. Aliquam a ornare nibh. Integer lobortis nunc et porttitor rhoncus. Curabitur non tellus non dui varius consectetur varius a arcu. Curabitur a luctus odio, sit amet accumsan lorem. 
+										</p>
+									</div>
+								</div>
+								<!--Vista movil-->
+								<div class="row hidden-lg hidden-md">
+									<div class="col-md-12 col-sm-12 fondo-gris1  rounded">
+										<h5 class="text-center mt-4">Oferta de trabajo postulada</h5> 
+										<p style="margin:12px;" class="text-justify">
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque viverra vel purus vitae blandit. Vestibulum aliquet eget massa sed faucibus. Praesent rutrum in diam non venenatis. Nullam rutrum finibus risus eget facilisis. Sed vehicula non massa id bibendum. Nunc et aliquam nisi. Cras egestas metus porttitor, iaculis ex a, rutrum diam. Aliquam a ornare nibh. Integer lobortis nunc et porttitor rhoncus. Curabitur non tellus non dui varius consectetur varius a arcu. Curabitur a luctus odio, sit amet accumsan lorem. 
+										</p>
+									</div>
+									<div class=" col-md-12 col-sm-12 fondo-gris1 mt-2  rounded">
+										<h5 class="text-center mt-4">Oferta de trabajo postulada</h5> 
+										<p style="margin:12px;" class="text-justify">
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque viverra vel purus vitae blandit. Vestibulum aliquet eget massa sed faucibus. Praesent rutrum in diam non venenatis. Nullam rutrum finibus risus eget facilisis. Sed vehicula non massa id bibendum. Nunc et aliquam nisi. Cras egestas metus porttitor, iaculis ex a, rutrum diam. Aliquam a ornare nibh. Integer lobortis nunc et porttitor rhoncus. Curabitur non tellus non dui varius consectetur varius a arcu. Curabitur a luctus odio, sit amet accumsan lorem. 
+										</p>
+									</div>
+									<div class=" col-md-12 col-sm-12 fondo-gris1 mt-2  rounded">
+										<h5 class="text-center mt-4">Oferta de trabajo postulada</h5> 
+										<p style="margin:12px;" class="text-justify">
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque viverra vel purus vitae blandit. Vestibulum aliquet eget massa sed faucibus. Praesent rutrum in diam non venenatis. Nullam rutrum finibus risus eget facilisis. Sed vehicula non massa id bibendum. Nunc et aliquam nisi. Cras egestas metus porttitor, iaculis ex a, rutrum diam. Aliquam a ornare nibh. Integer lobortis nunc et porttitor rhoncus. Curabitur non tellus non dui varius consectetur varius a arcu. Curabitur a luctus odio, sit amet accumsan lorem. 
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-5 col-sm-12 mt-2 ">
+								<!--nube de palabras-->
+								<div class="row">
+									<div class="col-md-12 col-sm-12  fondo-gris1 rounded" style="height:800px;">
+										<div id="nubePalabras" style="background:#fff;margin-top:10px;margin-bottom:10px; height:100%;" class="rounded"><span class="text-center">#nubePalabras</span></div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-		</section><!-- Intro Section End -->
+		</section>
+		<footer class="text-center fixed-bottom" style="background-color: rgba(50, 47, 47, 0.73); height: 30px;">
+		</footer>
 		<!--Modal (Signin/Signup Page)-->
 		<div class="modal fade" id="firmado">
 			<div class="modal-dialog">

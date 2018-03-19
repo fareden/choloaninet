@@ -115,7 +115,7 @@ $catalogo = new Catalogo('empresa', "P", null, "form-control");	//Sirve para cre
 			</nav>
 		</header>
 		<div class="container mt-5">
-			<div class="row" >
+			<div class="row">
 				<div class="col-md-10 espacio-abajo">
 					<div class="input-group">
 						<input type="text" id="txtBusca" class="form-control" placeholder=" Buscar ">
@@ -131,7 +131,7 @@ $catalogo = new Catalogo('empresa', "P", null, "form-control");	//Sirve para cre
 				</div>
 			</div>
 			<div class="row mt-3 col-md-12">
-				<H2 class="mb-4">Conceptos</H2>
+				<H2 class="mb-4">Empresas registradas</H2>
 				<div class="well well-lg color-well table-responsive">
 					<div id="vista"></div>
 				</div>

@@ -1,7 +1,6 @@
 <?php
 function dameMenuApp() {
 	$retval = '<ul class="nav navbar-nav navbar-right">
-		<li class="nav-item"><a class="nav-link" href="inicio.php"> <i class="material-icons">home</i> </a></li>
 		<li class="nav-item"><a class="nav-link" href="empresas.php">Empresas</a></li>
 		<li class="nav-item"><a class="nav-link" href="directorio.php">Directorio</a></li>
 		<li class="nav-item"><a class="nav-link" href="blog.php">Blog</a></li>
@@ -18,7 +17,6 @@ function dameMenuApp() {
 
 function dameMenuMigrante() {
 	$retval = '<ul class="nav navbar-nav navbar-right">
-		<li class="nav-item"><a class="text-white nav-link" href="landing.php"> <i class="material-icons">home</i> </a></li>
 		<li class="nav-item"><a class="text-white nav-link" href="emprende.php">Emprender</a></li>
 		<li class="nav-item"><a class="text-white nav-link" href="cv.php">Generar Currículum</a></li>
 		<li class="nav-item"><a class="text-white nav-link" href="mensajes.php">Mensajes</a></li>

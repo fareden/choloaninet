@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*CSS personalizado migra*/
 input[type=text], select, input[type=password], input[type=number], textarea{
 	display: block;
@@ -22,4 +21,11 @@ input[type=text], select, input[type=password], input[type=number], textarea{
 
 .fondo-gris1{
 	background-color: rgba(105, 100, 100, 0.26);
+}
+
+.oferta {
+    background: #fff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 100%;
 }

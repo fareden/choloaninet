@@ -109,8 +109,8 @@ if (!$hayUsuario) {
 			
 		</section>
 		<!-- Intro Section End -->
-		<section style="position:fixed; z-index:1;min-width:100%; margin-top:30px;">
-			<div class="container">
+		<section style="position:fixed; z-index:1;min-width:100%;">
+			<div class="container" style=" margin-top:30px;">
 				<div class="row">
 					<div class="col-md-10 col-sm-12 col-md-offset-1">
 						<div class="row rounded fondo-gris1">

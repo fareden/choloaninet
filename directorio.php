@@ -5,7 +5,7 @@ require_once("./motores/interno/validador.php");
 require_once("./motores/interno/formatos.php");
 require_once("./motores/interno/defs.php");
 require_once("./motores/interno/MasterCat.class.php");
-$catalogo = new Catalogo('empresa', "P", null, "form-control");	//Sirve para crear el arreglo de la tabla principal
+$catalogo = new Catalogo('directorio', "P", null, "form-control");	//Sirve para crear el arreglo de la tabla principal
 //La siguiente línea define un catálogo detalle, asignar el nombre de la tabla y descomentariar para usar
 ?>
 <!DOCTYPE html>
@@ -115,7 +115,7 @@ $catalogo = new Catalogo('empresa', "P", null, "form-control");	//Sirve para cre
 			</nav>
 		</header>
 		<div class="container mt-5">
-			<div class="row">
+			<div class="row" >
 				<div class="col-md-10 espacio-abajo">
 					<div class="input-group">
 						<input type="text" id="txtBusca" class="form-control" placeholder=" Buscar ">
@@ -131,7 +131,7 @@ $catalogo = new Catalogo('empresa', "P", null, "form-control");	//Sirve para cre
 				</div>
 			</div>
 			<div class="row mt-3 col-md-12">
-				<H2 class="mb-4">Empresas registradas</H2>
+				<H2 class="mb-4">Conceptos</H2>
 				<div class="well well-lg color-well table-responsive">
 					<div id="vista"></div>
 				</div>
@@ -154,7 +154,7 @@ $catalogo = new Catalogo('empresa', "P", null, "form-control");	//Sirve para cre
 									<?= $catalogo->comoTabla(); ?>
 								</table>
 								<!-- Cambiar el siguiente campo para cambiar la página de regreso -->
-								<input type="hidden" name="r" value="conceptos.php"/>
+								<input type="hidden" name="r" value="directorio.php"/>
 								<input type="hidden" name="ae" value="" id="ae" />
 							</form>
 						</div>

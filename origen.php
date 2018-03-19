@@ -46,12 +46,13 @@ require_once("./motores/interno/defs.php");
 				return false;
 			}
 		</script>
+		<style type="text/css">
+		</style>
 	</head>
 	<body>
 		<header>
 			<nav id="herramientas" class="navbar navbar-toggleable-md navbar-light bg-faded"  style="background-color: rgba(105, 100, 100, 0.73); height:120px;">
-				<!--
-				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#opciones" aria-controls="opciones" aria-expanded="false" aria-label="Toggle navigation">
+				<!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#opciones" aria-controls="opciones" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<a class="navbar-brand" href="#"><img src="img/logo-small.png" alt="logo"></a>

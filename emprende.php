@@ -44,12 +44,17 @@ $oferta = new Catalogo("oferta", 'P', null, 'form-control');
 						if (datos[i].hasOwnProperty(llave)) {
 							if (i == 0) {
 								//Ponemos los encabezados
-								if (llave != "id") hdr += '<th>' + llave + '</th>';
+								if (llave.substr(0, 2) != "id") hdr += '<th>' + llave + '</th>';
 							}
-							if (llave != "id") contenido += '<td>' + datos[i][llave] + '</td>';
+							if (llave.substr(0, 2) != "id") contenido += '<td>' + datos[i][llave] + '</td>';
 						}
 					}
-					contenido += '<td><button onclick="edita(\'' + datos[i]["id"] + '\')" data-toggle="modal" data-target="#agregaCliente">Modificar</button>  <button onclick="borra(\'' + datos[i]["id"] + '\')">Eliminar</button></td></tr>';
+					contenido += '<td><button onclick="verAlcance(\'' + datos[i]["id"] + '\')" data-toggle="modal" data-target="#verActividad">Ver respuesta</button>  <button onclick="edita(\'' + datos[i]["id"] + '\')" data-toggle="modal" data-target="#agregaCliente">Modificar</button>  <button onclick="borra(\'' + datos[i]["id"] + '\')">Eliminar</button></td></tr>';
+				}
+				if (datos.length > 2) {
+					$("#btnAgregar").hide();
+					$("#btnAgregar").removeAttr("data-target");
+					$("#btnAgregar").removeAttr("data-toggle");
 				}
 				contenido = '<table class="table table-striped">' + hdr + '</tr>' + contenido + '</table>';
 				$("#vista").html(contenido);
@@ -107,7 +112,7 @@ $oferta = new Catalogo("oferta", 'P', null, 'form-control');
 			});
 		</script>
 	</head>
-	<body>
+	<body onload="inicia()">
 		<header>
 			<nav id="herramientas" class="navbar navbar-toggleable-md navbar-light bg-faded"  style="background-color: rgba(105, 100, 100, 0.73); height:120px;">
 				<!--
@@ -134,7 +139,7 @@ $oferta = new Catalogo("oferta", 'P', null, 'form-control');
 				<div id="vista"></div>
 			</div>
 			<div class="row">
-				<a href="#" class="btn btn-success" role="button" data-target="#divAgregar" data-toggle="modal" onclick="preparaMapa()">¡Iniciar un proyecto!</a>
+				<a href="#" id="btnAgregar" class="btn btn-success" role="button" data-target="#divAgregar" data-toggle="modal" onclick="preparaMapa()">¡Iniciar un proyecto!</a>
 			</div>
 		</div>
 		<!-- Footer -->
@@ -163,6 +168,7 @@ $oferta = new Catalogo("oferta", 'P', null, 'form-control');
 								</table>
 								<!-- Cambiar el siguiente campo para cambiar la página de regreso -->
 								<input type="hidden" name="<?= ofusca('oferta[tipo]') ?>" value="emprendimiento" />
+								<input type="hidden" name="<?= ofusca('oferta[idcreador]') ?>" value="<?= $_SESSION['Usuario']['id'] ?>" />
 								<input type="hidden" name="r" value="emprende.php"/>
 								<input type="hidden" name="ae" value="" id="ae" />
 							</form>

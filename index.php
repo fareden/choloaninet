@@ -1,9 +1,11 @@
 <?php
 require_once("./motores/interno/defs.php");
+require_once("./motores/interno/conexion.php");
 session_start();
 $hayUsuario = (isset($_SESSION['Usuario']) && !($_SESSION['Usuario']['rol'] == 't' || $_SESSION['Usuario']['rol'] == 'n'));
 if (!$hayUsuario) {
 	$_SESSION['Usuario'] = array("rol" => "t", "publica" => "invalida");
+	$dbcon = conectaDB();
 	?>
 <!DOCTYPE html>
 <html>
@@ -71,10 +73,8 @@ if (!$hayUsuario) {
 				}
 			}
 		</script>
-		<style>
-		</style>
 	</head>
-	<body class="fixed-footer">
+	<body class="">
 		<header>
 			<nav id="herramientas" class="navbar navbar-toggleable-md"  style="background-color: rgba(50, 47, 47, 0.73); height:120px;">
 				<!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#opciones" aria-controls="opciones" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,10 +109,10 @@ if (!$hayUsuario) {
 			
 		</section>
 		<!-- Intro Section End -->
-		<section style="position:fixed; z-index:1;min-width:100%;">
+		<section style="position: absolute; z-index:1; min-width:100%;">
 			<div class="container" style=" margin-top:30px;">
 				<div class="row">
-					<div class="col-md-10 col-sm-12 col-md-offset-1">
+					<div class="col-md-12 col-sm-12">
 						<div class="row rounded fondo-gris1">
 							<div class=" rounded" style="background-color: rgba(50, 47, 47, 0.73); margin:8px;">
 								<div class="col-md-8 col-sm-12 col-md-offset-2" style="margin-top:40px;">
@@ -124,50 +124,23 @@ if (!$hayUsuario) {
 						</div>
 						<div class="row" >
 							<div class="col-md-7 col-sm-12 mt-2 ">
-								<!--Vista web-->
-								<div class="row hidden-sm hidden-xs">
-									<div class="fondo-gris1  rounded" style="width:98%;">
-										<h5 class="text-center mt-4">Oferta de trabajo postulada</h5> 
-										<p style="margin:12px;" class="text-justify">
-											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque viverra vel purus vitae blandit. Vestibulum aliquet eget massa sed faucibus. Praesent rutrum in diam non venenatis. Nullam rutrum finibus risus eget facilisis. Sed vehicula non massa id bibendum. Nunc et aliquam nisi. Cras egestas metus porttitor, iaculis ex a, rutrum diam. Aliquam a ornare nibh. Integer lobortis nunc et porttitor rhoncus. Curabitur non tellus non dui varius consectetur varius a arcu. Curabitur a luctus odio, sit amet accumsan lorem. 
-										</p>
-									</div>
-									<div class="fondo-gris1 mt-2 rounded mr-2" style="width:48%;">
-										<h5 class="text-center mt-4">Oferta de trabajo postulada</h5> 
-										<p style="margin:12px;" class="text-justify" >
-											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque viverra vel purus vitae blandit. Vestibulum aliquet eget massa sed faucibus. Praesent rutrum in diam non venenatis. Nullam rutrum finibus risus eget facilisis. Sed vehicula non massa id bibendum. Nunc et aliquam nisi. Cras egestas metus porttitor, iaculis ex a, rutrum diam. Aliquam a ornare nibh. Integer lobortis nunc et porttitor rhoncus. Curabitur non tellus non dui varius consectetur varius a arcu. Curabitur a luctus odio, sit amet accumsan lorem. 
-										</p>
-									</div>
-									<div class="fondo-gris1 mt-2 rounded" style="width:48%;">
-										<h5 class="text-center mt-4 ">Oferta de trabajo postulada</h5> 
-										<p style="margin:12px;" class="text-justify">
-											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque viverra vel purus vitae blandit. Vestibulum aliquet eget massa sed faucibus. Praesent rutrum in diam non venenatis. Nullam rutrum finibus risus eget facilisis. Sed vehicula non massa id bibendum. Nunc et aliquam nisi. Cras egestas metus porttitor, iaculis ex a, rutrum diam. Aliquam a ornare nibh. Integer lobortis nunc et porttitor rhoncus. Curabitur non tellus non dui varius consectetur varius a arcu. Curabitur a luctus odio, sit amet accumsan lorem. 
-										</p>
-									</div>
-								</div>
-								<!--Vista movil-->
-								<div class="row hidden-lg hidden-md">
-									<div class="col-md-12 col-sm-12 fondo-gris1  rounded">
-										<h5 class="text-center mt-4">Oferta de trabajo postulada</h5> 
-										<p style="margin:12px;" class="text-justify">
-											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque viverra vel purus vitae blandit. Vestibulum aliquet eget massa sed faucibus. Praesent rutrum in diam non venenatis. Nullam rutrum finibus risus eget facilisis. Sed vehicula non massa id bibendum. Nunc et aliquam nisi. Cras egestas metus porttitor, iaculis ex a, rutrum diam. Aliquam a ornare nibh. Integer lobortis nunc et porttitor rhoncus. Curabitur non tellus non dui varius consectetur varius a arcu. Curabitur a luctus odio, sit amet accumsan lorem. 
-										</p>
-									</div>
-									<div class=" col-md-12 col-sm-12 fondo-gris1 mt-2  rounded">
-										<h5 class="text-center mt-4">Oferta de trabajo postulada</h5> 
-										<p style="margin:12px;" class="text-justify">
-											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque viverra vel purus vitae blandit. Vestibulum aliquet eget massa sed faucibus. Praesent rutrum in diam non venenatis. Nullam rutrum finibus risus eget facilisis. Sed vehicula non massa id bibendum. Nunc et aliquam nisi. Cras egestas metus porttitor, iaculis ex a, rutrum diam. Aliquam a ornare nibh. Integer lobortis nunc et porttitor rhoncus. Curabitur non tellus non dui varius consectetur varius a arcu. Curabitur a luctus odio, sit amet accumsan lorem. 
-										</p>
-									</div>
-									<div class=" col-md-12 col-sm-12 fondo-gris1 mt-2  rounded">
-										<h5 class="text-center mt-4">Oferta de trabajo postulada</h5> 
-										<p style="margin:12px;" class="text-justify">
-											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque viverra vel purus vitae blandit. Vestibulum aliquet eget massa sed faucibus. Praesent rutrum in diam non venenatis. Nullam rutrum finibus risus eget facilisis. Sed vehicula non massa id bibendum. Nunc et aliquam nisi. Cras egestas metus porttitor, iaculis ex a, rutrum diam. Aliquam a ornare nibh. Integer lobortis nunc et porttitor rhoncus. Curabitur non tellus non dui varius consectetur varius a arcu. Curabitur a luctus odio, sit amet accumsan lorem. 
-										</p>
-									</div>
-								</div>
+								<?php
+								$qry = "select * from vt_ofertas_pub order by rand() limit 15;";
+								$rs = $dbcon->query($qry);
+								while ($fila = $rs->fetch_row()) {
+									$largoOfer = (strlen($fila[1]) > 10 ? "col-md-12" : "col-md-6 col-sm-12 col-xs-12");
+									echo("<div class='fondo-gris1 rounded {$largoOfer}'>
+										<div id='oferta rounded' class='oferta'>
+											<h5 class='text-center mt-4'>{$fila[0]}</h5> 
+											<p style='margin:12px;' class='text-justify'>
+												{$fila[1]} 
+											</p>
+										</div>
+									</div>");
+								}
+								?>
 							</div>
-							<div class="col-md-5 col-sm-12 mt-2 ">
+							<div class="col-md-5 mt-2 hidden-xs hidden-sm">
 								<!--nube de palabras-->
 								<div class="row">
 									<div class="col-md-12 col-sm-12  fondo-gris1 rounded" style="height:800px;">

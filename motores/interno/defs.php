@@ -13,7 +13,7 @@ define("CORREO_SERVIDOR", "ssl://smtp.gmail.com", FALSE);
 define("CORREO_USUARIO", "carpathiapruebas@gmail.com", FALSE);
 define("CORREO_PASSWD", "orgon2016", FALSE);
 define("CORREO_PUERTO", "465", FALSE);
-define("NOMBRE_APLICACION", "Zenbakia", FALSE);
+define("NOMBRE_APLICACION", "CholoaniNET", FALSE);
 
 //TODO El ejército Cuadrumano es un arreglo con las posibles implementaciones de hanumat en diferentes servidores.
 $ejercitoCuadrumano = array("./motores/hanumat.php");

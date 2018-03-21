@@ -25,7 +25,6 @@ input[type=text], select, input[type=password], input[type=number], textarea{
 
 .oferta {
     background: #fff;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    height: 100%;
+    margin: 7px;
+    border-radius: 3px;
 }

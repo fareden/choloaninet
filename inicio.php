@@ -26,6 +26,7 @@ $catalogo = new Catalogo('movimiento', "P", null);	//Sirve para crear el arreglo
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
 		<!--CSS-->
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/personalizado.css" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
@@ -51,27 +52,57 @@ $catalogo = new Catalogo('movimiento', "P", null);	//Sirve para crear el arreglo
 	</head>
 	<body>
 		<header>
-			<nav id="herramientas" class="navbar navbar-toggleable-md navbar-light bg-faded">
-				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#opciones" aria-controls="opciones" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<a class="navbar-brand" href="#"><img src="img/logo-small.png" alt="logo"></a>
-				<div id="opciones" class="collapse navbar-collapse">
-					<?= dameMenuApp(); ?>
-				</div>
+			<nav id="herramientas" class="navbar navbar-toggleable-md"  style="background-color: rgba(50, 47, 47, 0.73); height:120px;">
+				<?= dameMenuApp(); ?>
 			</nav>
 		</header>
-		<div class="container">
-			<div class="row" >
-			</div>
-		</div>
-		<!-- Footer -->
-		<footer>
-			<div class="row">
-				<div class="col-lg-12">
-					<p>2018 &copy; Datametrix </p>
+		<!-- Intro Section -->
+		<section class="intro" style="background-image: url(img/fondo2.jpg); min-height: 60%;"></section>
+		</section>
+		<section style="position: absolute; z-index:1; min-width:100%;">
+			<div class="container" style=" margin-top:30px;">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<div class="row rounded fondo-gris1">
+							<div class=" rounded" style="width: 100%;background-color: rgba(50, 47, 47, 0.73); margin:8px;">
+								<div class="col-md-12 col-sm-12" style="margin-top:40px;">
+									<h3 style="color:#eaa704;">Consola de Administración CholoaniNET</h3>
+								</div>
+							</div>
+						</div>
+						<div class="row" >
+							<div class="col-md-7 col-sm-12 mt-2 ">
+								<?php
+								$qry = "select * from vt_ofertas_pub order by rand() limit 15;";
+								$rs = $dbcon->query($qry);
+								while ($fila = $rs->fetch_row()) {
+									$largoOfer = (strlen($fila[1]) > 10 ? "col-md-12" : "col-md-6 col-sm-12 col-xs-12");
+									echo("<div class='fondo-gris1 rounded {$largoOfer}'>
+										<div id='oferta' class='oferta rounded'>
+											<h5 class='text-center mt-4'>{$fila[0]}</h5> 
+											<p style='margin:12px;' class='text-justify'>
+												{$fila[1]} 
+											</p>
+										</div>
+									</div>");
+								}
+								?>
+							</div>
+							<div class="col-md-5 mt-2 hidden-xs hidden-sm">
+								<!--nube de palabras-->
+								<div class="row">
+									<div class="col-md-12 col-sm-12  fondo-gris1 rounded" style="height:800px;">
+										<div id="nubePalabras" style="background:#fff;margin-top:10px;margin-bottom:10px; height:100%;" class="rounded"><span class="text-center">#nubePalabras</span></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
+		</section>
+		<footer class="text-center fixed-bottom" style="background-color: rgba(50, 47, 47, 0.73); height: 30px;">
+			<p>©Datametrix 2018</p>
 		</footer>
 		<script src="js/popper.js"></script>
 		<script src="js/bootstrap.min.js"></script>

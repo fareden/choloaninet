@@ -5,7 +5,7 @@ require_once("./motores/interno/validador.php");
 require_once("./motores/interno/formatos.php");
 require_once("./motores/interno/defs.php");
 require_once("./motores/interno/MasterCat.class.php");
-$catalogo = new Catalogo('empresa', "P", null, "form-control");	//Sirve para crear el arreglo de la tabla principal
+$catalogo = new Catalogo('migrante', "P", null, "form-control");	//Sirve para crear el arreglo de la tabla principal
 //La siguiente línea define un catálogo detalle, asignar el nombre de la tabla y descomentariar para usar
 ?>
 <!DOCTYPE html>
@@ -44,9 +44,9 @@ $catalogo = new Catalogo('empresa', "P", null, "form-control");	//Sirve para cre
 						if (datos[i].hasOwnProperty(llave)) {
 							if (i == 0) {
 								//Ponemos los encabezados
-								if (llave != "id") hdr += '<th>' + llave + '</th>';
+								if (llave.substr(0, 2) != "id") hdr += '<th>' + llave + '</th>';
 							}
-							if (llave != "id") contenido += '<td>' + datos[i][llave] + '</td>';
+							if (llave.substr(0, 2) != "id") contenido += '<td>' + datos[i][llave] + '</td>';
 						}
 					}
 					contenido += '<td><button onclick="edita(\'' + datos[i]["id"] + '\')" data-toggle="modal" data-target="#agregaCliente">Modificar</button>  <button onclick="borra(\'' + datos[i]["id"] + '\')">Eliminar</button></td></tr>';
@@ -119,7 +119,7 @@ $catalogo = new Catalogo('empresa', "P", null, "form-control");	//Sirve para cre
 						<div class="row rounded fondo-gris1">
 							<div class=" rounded" style="width: 100%;background-color: rgba(50, 47, 47, 0.73); margin:8px;">
 								<div class="col-md-12 col-sm-12" style="margin-top:40px;">
-									<h3 style="color:#eaa704;">Empresas afiliadas</h3>
+									<h3 style="color:#eaa704;">Blog y noticias</h3>
 									<input type="text" id="txtBusca" class="col-md-8 form-control" placeholder=" Buscar ">
 									<div class="col-md-2">
 										<span class="input-group-btn">
@@ -127,7 +127,7 @@ $catalogo = new Catalogo('empresa', "P", null, "form-control");	//Sirve para cre
 										</span>
 									</div>
 									<div class="col-md-2">
-										<a href="#"  id="nuevo" class="btn btn-success pull-right" data-toggle="modal" data-target="#agregaCliente" role="button"> <i class="material-icons align-middle">add_circle</i> Agregar</a>
+										<!-- <a href="#"  id="nuevo" class="btn btn-success pull-right" data-toggle="modal" data-target="#agregaCliente" role="button"> <i class="material-icons align-middle">add_circle</i> Agregar</a> -->
 									</div>
 								</div>
 							</div>
@@ -135,7 +135,7 @@ $catalogo = new Catalogo('empresa', "P", null, "form-control");	//Sirve para cre
 						<div class="row">
 							<div class="fondo-gris1 rounded">
 								<div class="oferta rounded">
-									<H2 class="mb-4">Empresas registradas</H2>
+									<H2 class="mb-4">Migrantes registrados</H2>
 									<div class="well well-lg color-well table-responsive">
 										<div id="vista"></div>
 									</div>
@@ -155,7 +155,7 @@ $catalogo = new Catalogo('empresa', "P", null, "form-control");	//Sirve para cre
 				<!--Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title">Empresas</h5>
+						<h5 class="modal-title">Entrada al blog</h5>
 						<button type="button" class="close limpia" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
@@ -166,7 +166,8 @@ $catalogo = new Catalogo('empresa', "P", null, "form-control");	//Sirve para cre
 									<?= $catalogo->comoTabla(); ?>
 								</table>
 								<!-- Cambiar el siguiente campo para cambiar la página de regreso -->
-								<input type="hidden" name="r" value="conceptos.php"/>
+								<input type="hidden" name="<?= ofusca('blog[idusuario]'); ?>" value="<?= $_SESSION['Usuario']['id'] ?>" />
+								<input type="hidden" name="r" value="blog.php"/>
 								<input type="hidden" name="ae" value="" id="ae" />
 							</form>
 						</div>

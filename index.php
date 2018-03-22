@@ -91,10 +91,8 @@ if (!$hayUsuario) {
 				<?= dameMenuGeneral(); ?>
 			</nav>
 		</header>
-		
 		<!-- Intro Section -->
 		<section class="intro" style="background-image: url(img/fondo2.jpg); min-height: 60%;"></section>
-			
 		</section>
 		<!-- Intro Section End -->
 		<section style="position: absolute; z-index:1; min-width:100%;">

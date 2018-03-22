@@ -4,8 +4,6 @@ require_once("./motores/interno/funciones.php");
 require_once("./motores/interno/validador.php");
 require_once("./motores/interno/formatos.php");
 require_once("./motores/interno/defs.php");
-require_once("./motores/interno/MasterCat.class.php");
-$catalogo = new Catalogo('empresa', "P", null, "form-control");	//Sirve para crear el arreglo de la tabla principal
 //La siguiente línea define un catálogo detalle, asignar el nombre de la tabla y descomentariar para usar
 ?>
 <!DOCTYPE html>
@@ -31,7 +29,6 @@ $catalogo = new Catalogo('empresa', "P", null, "form-control");	//Sirve para cre
 		<link rel="stylesheet" type="text/css" href="css/personalizado.css" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 		<link rel="stylesheet" href="js/jquery-ui.min.css" />
-		<?= $catalogo->getScripts() ?>
 		<script type="text/javascript">
 			function dibuja(datos) {
 				//console.log($("#frmAlta").serialize());
@@ -103,7 +100,7 @@ $catalogo = new Catalogo('empresa', "P", null, "form-control");	//Sirve para cre
 			});
 		</script>
 	</head>
-	<body onload="inicia()">
+	<body>
 		<header>
 			<nav id="herramientas" class="navbar navbar-toggleable-md"  style="background-color: rgba(50, 47, 47, 0.73); height:120px;">
 				<?= dameMenuApp(); ?>
@@ -119,7 +116,7 @@ $catalogo = new Catalogo('empresa', "P", null, "form-control");	//Sirve para cre
 						<div class="row rounded fondo-gris1">
 							<div class=" rounded" style="width: 100%;background-color: rgba(50, 47, 47, 0.73); margin:8px;">
 								<div class="col-md-12 col-sm-12" style="margin-top:40px;">
-									<h3 style="color:#eaa704;">Empresas afiliadas</h3>
+									<h3 style="color:#eaa704;">Reportes</h3>
 									<input type="text" id="txtBusca" class="col-md-8 form-control" placeholder=" Buscar ">
 									<div class="col-md-2">
 										<span class="input-group-btn">
@@ -127,7 +124,7 @@ $catalogo = new Catalogo('empresa', "P", null, "form-control");	//Sirve para cre
 										</span>
 									</div>
 									<div class="col-md-2">
-										<a href="#"  id="nuevo" class="btn btn-success pull-right" data-toggle="modal" data-target="#agregaCliente" role="button"> <i class="material-icons align-middle">add_circle</i> Agregar</a>
+										<a href="#"  id="nuevo" class="btn btn-success pull-right" data-toggle="modal" data-target="#filtro" role="button"> <i class="material-icons align-middle">add_circle</i> Filtrar</a>
 									</div>
 								</div>
 							</div>
@@ -135,7 +132,7 @@ $catalogo = new Catalogo('empresa', "P", null, "form-control");	//Sirve para cre
 						<div class="row">
 							<div class="fondo-gris1 rounded">
 								<div class="oferta rounded">
-									<H2 class="mb-4">Empresas registradas</H2>
+									<H2 class="mb-4">(Aquí van los indicadores)</H2>
 									<div class="well well-lg color-well table-responsive">
 										<div id="vista"></div>
 									</div>
@@ -155,7 +152,7 @@ $catalogo = new Catalogo('empresa', "P", null, "form-control");	//Sirve para cre
 				<!--Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title">Empresas</h5>
+						<h5 class="modal-title">Entrada al blog</h5>
 						<button type="button" class="close limpia" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
@@ -163,17 +160,17 @@ $catalogo = new Catalogo('empresa', "P", null, "form-control");	//Sirve para cre
 						<div id="forma">
 							<form id="frmAlta">
 								<table border="0">	
-									<?= $catalogo->comoTabla(); ?>
 								</table>
 								<!-- Cambiar el siguiente campo para cambiar la página de regreso -->
-								<input type="hidden" name="r" value="conceptos.php"/>
+								<input type="hidden" name="<?= ofusca('blog[idusuario]'); ?>" value="<?= $_SESSION['Usuario']['id'] ?>" />
+								<input type="hidden" name="r" value="blog.php"/>
 								<input type="hidden" name="ae" value="" id="ae" />
 							</form>
 						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="limpia btn btn-default " data-dismiss="modal">Cancelar</button>
-						<a href="javascript:void(0)" class="btn btn-primary" onclick="agregaRegistro()">Agregar</a>
+						<a href="javascript:void(0)" class="btn btn-primary" onclick="ejecuta()">Agregar</a>
 					</div>
 				</div>
 			</div>

@@ -26,6 +26,7 @@ $catalogo = new Catalogo('directorio', "P", null, "form-control");	//Sirve para 
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
 		<!--CSS-->
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/personalizado.css" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
@@ -104,46 +105,57 @@ $catalogo = new Catalogo('directorio', "P", null, "form-control");	//Sirve para 
 	</head>
 	<body onload="inicia()">
 		<header>
-			<nav id="herramientas" class="navbar navbar-toggleable-md navbar-light bg-faded">
-				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#opciones" aria-controls="opciones" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<a class="navbar-brand" href="#"><img src="img/logo-small.png" alt="logo"></a>
-				<div id="opciones" class="collapse navbar-collapse">
-					<?= dameMenuApp(); ?>
-				</div>
+			<nav id="herramientas" class="navbar navbar-toggleable-md"  style="background-color: rgba(50, 47, 47, 0.73); height:120px;">
+				<?= dameMenuApp(); ?>
 			</nav>
 		</header>
-		<div class="container mt-5">
-			<div class="row" >
-				<div class="col-md-10 espacio-abajo">
-					<div class="input-group">
-						<input type="text" id="txtBusca" class="form-control" placeholder=" Buscar ">
-						<span class="input-group-btn">
-							<button class="btn btn-default"  onclick="busca()" id="btnBusca" type="button"> <i class="material-icons align-middle">search</i> </button>
-						</span>
-					</div>
-				</div>
-				<div class="col-md-2 espacio-abajo">
-					<div class="input-group">
-						<a href="#"  id="nuevo" class="btn btn-success pull-right" data-toggle="modal" data-target="#agregaCliente" role="button"> <i class="material-icons align-middle">add_circle</i> Agregar</a>
+		<!-- Intro Section -->
+		<section class="intro" style="background-image: url(img/fondo2.jpg); min-height: 60%;"></section>
+		</section>
+		<section style="position: absolute; z-index:1; min-width:100%;">
+			<div class="container" style=" margin-top:30px;">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<div class="row rounded fondo-gris1">
+							<div class=" rounded" style="width: 100%;background-color: rgba(50, 47, 47, 0.73); margin:8px;">
+								<div class="col-md-12 col-sm-12" style="margin-top:40px;">
+									<h3 style="color:#eaa704;">Directorio de Dependencias</h3>
+									<input type="text" id="txtBusca" class="col-md-8 form-control" placeholder=" Buscar ">
+									<div class="col-md-2">
+										<span class="input-group-btn">
+											<button class="btn btn-default"  onclick="busca()" id="btnBusca" type="button"> <i class="material-icons align-middle">search</i> </button>
+										</span>
+									</div>
+									<div class="col-md-2">
+										<a href="#"  id="nuevo" class="btn btn-success pull-right" data-toggle="modal" data-target="#agregaCliente" role="button"> <i class="material-icons align-middle">add_circle</i> Agregar</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="fondo-gris1 rounded">
+								<div class="oferta rounded">
+									<H2 class="mb-4">Dependencias registradas</H2>
+									<div class="well well-lg color-well table-responsive">
+										<div id="vista"></div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="row mt-3 col-md-12">
-				<H2 class="mb-4">Conceptos</H2>
-				<div class="well well-lg color-well table-responsive">
-					<div id="vista"></div>
-				</div>
-			</div>
-		</div>
+		</section>
+		<footer class="text-center fixed-bottom" style="background-color: rgba(50, 47, 47, 0.73); height: 30px;">
+			<p>©Datametrix 2018</p>
+		</footer>
 		<!--modal para agregar almacenamientos-->
 		<div id="agregaCliente" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="agregaClienteLabel" aria-hidden="true">
 			<div class="modal-dialog fondo"> 
 				<!--Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title">Conceptos</h5>
+						<h5 class="modal-title">Dependencias</h5>
 						<button type="button" class="close limpia" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">

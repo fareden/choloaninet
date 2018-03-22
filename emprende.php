@@ -17,7 +17,6 @@ $oferta = new Catalogo("oferta", 'P', null, 'form-control');
 		<meta name="description" content="Descripción" />
 		<meta name="keywords" content="Palabras Clave" />
 		<meta name="author" content="CarpathiaLab" />
-
 		<!-- Mobile Specific Meta Tag -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<!-- Favicon Icon -->
@@ -26,12 +25,13 @@ $oferta = new Catalogo("oferta", 'P', null, 'form-control');
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
 		<!--CSS-->
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/personalizado.css" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-		<link rel="stylesheet" href="css/jquery-ui.min.css" />
+		<link rel="stylesheet" href="js/jquery-ui.min.css" />
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?&libraries=places&language=es&key=AIzaSyBWe3yPvnEk__zqa04SH0UlDqsjGG_TBWs"></script>
-		<?= $oferta->getScripts(); ?>
+		<?= $oferta->getScripts() ?>
 		<script type="text/javascript">
 			function dibuja(datos) {
 				//console.log($("#frmAlta").serialize());
@@ -63,7 +63,7 @@ $oferta = new Catalogo("oferta", 'P', null, 'form-control');
 				console.log("Hubo bronquitas con los datos");
 			}
 			function inicia() {
-				busca();
+				busca(undefined, '<?= ofusca('idusuario = ' . $_SESSION['Usuario']['id']); ?>');
 			}
 			function preparaMapa() {
 				creaMapa_<?= $oferta->getPrefijo() ?>();
@@ -111,48 +111,56 @@ $oferta = new Catalogo("oferta", 'P', null, 'form-control');
 				 });
 			});
 		</script>
+		<style type="text/css">
+			.tblForma {
+				width: 80%;
+				margin-left: 10%;
+			}
+		</style>
 	</head>
 	<body onload="inicia()">
 		<header>
-			<nav id="herramientas" class="navbar navbar-toggleable-md navbar-light bg-faded"  style="background-color: rgba(105, 100, 100, 0.73); height:120px;">
-				<!--
-				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#opciones" aria-controls="opciones" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<a class="navbar-brand" href="#"><img src="img/logo-small.png" alt="logo"></a>
-				<div id="opciones" class="collapse navbar-collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li class="nav-item"><a class="nav-link" href="registro.php">REGISTRARSE</a></li>
-						<li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#firmado">INICIAR SESIÓN</a></li>
-					</ul>
-				</div>-->
-				<a class="navbar-brand" href="#"><img src="img/logo-small.png" alt="logo"></a>
-				<div id="opciones" class="collapse navbar-collapse">
-					<?= dameMenuMigrante(); ?>
-				</div>
+			<nav id="herramientas" class="navbar navbar-toggleable-md"  style="background-color: rgba(50, 47, 47, 0.73); height:120px;">
+				<?= dameMenuMigrante(); ?>
 			</nav>
 		</header>
-		<div class="container">
-			<div class="row" >
-				<h1>Busca aliados para emprender un negocio</h1>
-				<h3>Actualmente haz iniciado los siquientes proyectos</h3>
-				<div id="vista"></div>
-			</div>
-			<div class="row">
-				<a href="#" id="btnAgregar" class="btn btn-success" role="button" data-target="#divAgregar" data-toggle="modal" onclick="preparaMapa()">¡Iniciar un proyecto!</a>
-			</div>
-		</div>
-		<!-- Footer -->
-		<footer>
-			<div class="row">
-				<div class="col-lg-12">
-					<p>2018 &copy; Datametrix </p>
+		<!-- Intro Section -->
+		<section class="intro" style="background-image: url(img/fondo2.jpg); min-height: 60%;"></section>
+		</section>
+		<section style="position: absolute; z-index:1; min-width:100%;">
+			<div class="container" style=" margin-top:30px;">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<div class="row rounded fondo-gris1">
+							<div class=" rounded" style="width: 100%;background-color: rgba(50, 47, 47, 0.73); margin:8px;">
+								<div class="col-md-12 col-sm-12" style="margin-top:40px;">
+									<h3 style="color:#eaa704;">Busca aliados para emprender un negocio</h3>
+									<div class="col-md-2">
+										<a href="#" id="btnAgregar" class="btn btn-success pull-right" data-toggle="modal" data-target="#divAgregar" role="button" onclick="preparaMapa()"> <i class="material-icons align-middle">add_circle</i> Iniciar una oferta</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="fondo-gris1 rounded">
+								<div class="oferta rounded">
+									<H2 class="mb-4">Actualmente haz iniciado los siquientes proyectos</H2>
+									<div class="well well-lg color-well table-responsive">
+										<div id="vista"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
+		</section>
+		<footer class="text-center fixed-bottom" style="background-color: rgba(50, 47, 47, 0.73); height: 30px;">
+			<p>©Datametrix 2018</p>
 		</footer>
 		<!-- MODAL -->
-		<div id="divAgregar" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="agregaClienteLabel" aria-hidden="true">
-			<div class="modal-dialog fondo"> 
+		<div id="divAgregar" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="agregaClienteLabel" aria-hidden="true" style="max-width: 60%;">
+			<div class="modal-dialog fondo" style="min-width: 100%">
 				<!--Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
@@ -163,7 +171,7 @@ $oferta = new Catalogo("oferta", 'P', null, 'form-control');
 						<div id="mensaje"></div>
 						<div id="forma">
 							<form id="frmAlta">
-								<table border="0">	
+								<table border="0" class="tblForma">	
 									<?= $oferta->comoTabla(); ?>
 								</table>
 								<!-- Cambiar el siguiente campo para cambiar la página de regreso -->

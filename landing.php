@@ -32,6 +32,55 @@ $dbcon = conectaDB();
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 		<link rel="stylesheet" href="css/jquery-ui.min.css" />
 		<script type="text/javascript">
+			function busca(pag) {
+				pag = pag || "0";
+				$.ajax({
+					url: "./motores/hanumat.php",
+					type: "POST",
+					dataType: "JSON",
+					data: {
+						t: "<?= ofusca('oferta_mig'); ?>",
+						r: "b",
+						b: $("#txtBusca").val(),
+						p: pag,
+						l: '<?= ofusca("'1' = '1'") ?>'
+					}
+				}).done(function (r){
+					//Renderear el resultado a la tabla
+					if (r.error == "0") {
+						dibuja(r.registros);
+						$("#paginas").html(r.paginador);
+					} else {
+						//no hay registros
+						errorDatos();
+					}
+				});
+			}
+			/*								while ($fila = $rs->fetch_row()) {
+									$largoOfer = (strlen($fila[1]) > 10 ? "col-md-12" : "col-md-6 col-sm-12 col-xs-12");
+									echo("<div class='fondo-gris1 rounded {$largoOfer}'>
+										<div id='oferta' class='oferta rounded'>
+											<h5 class='text-center mt-4'>{$fila[0]}</h5> 
+											<p style='margin:12px;' class='text-justify'>
+												{$fila[1]} 
+											</p>
+										</div>
+									</div>");
+								}
+								?>
+*/
+			function dibuja(datos) {
+				//console.log($("#frmAlta").serialize());
+				$("#vista").html("");
+				var contenido = "";
+				for (var i = 0; i < datos.length; i++) {
+					contenido += '<div class="fondo-gris1 rounded col-md-12"><div id="oferta_'+datos[i].id+'" class="oferta rounded">';
+					contenido += "<h5 class='text-center mt-4'>"+datos[i].titulo+"</h5><p style='margin:12px;' class='text-justify'>"+datos[i].texto+"</p>";
+					contenido += '<button onclick="interes(\'' + datos[i].id + '\')" data-toggle="modal" data-target="#verOferta">Me interesa!</button></div></div>';
+				}
+				$("#vista").html(contenido);
+			}
+
 			function doLogout() {
 				$.ajax({
 					url : "motores/hanumat.php",
@@ -50,7 +99,7 @@ $dbcon = conectaDB();
 			}
 		</script>
 	</head>
-	<body>
+	<body onload="busca()">
 		<header>
 			<nav id="herramientas" class="navbar navbar-toggleable-md"  style="background-color: rgba(50, 47, 47, 0.73); height:120px;">
 				<?= dameMenuMigrante(); ?>
@@ -68,27 +117,19 @@ $dbcon = conectaDB();
 								<div class="col-md-8 col-sm-12 col-md-offset-2" style="margin-top:40px;">
 									<img src="img/logo-largo.png" class="img-fluid">
 									<h3 class="text-center" style="color:#eaa704;">¡Bienvenid@!</h3>
-									<p class="text-white text-center">Ayudando a dar la bienvenida a nuestros talentos que regresan</p>
+									<input type="text" id="txtBusca" class="col-md-8 form-control" placeholder=" Buscar ">
+									<div class="col-md-2">
+										<span class="input-group-btn">
+											<button class="btn btn-default"  onclick="busca()" id="btnBusca" type="button"> <i class="material-icons align-middle">search</i> </button>
+										</span>
+									</div>
 								</div>
 							</div>
 						</div>
 						<div class="row" >
-							<div class="col-md-7 col-sm-12 mt-2 ">
-								<?php
-								$qry = "select * from vt_ofertas_pub order by rand() limit 15;";
-								$rs = $dbcon->query($qry);
-								while ($fila = $rs->fetch_row()) {
-									$largoOfer = (strlen($fila[1]) > 10 ? "col-md-12" : "col-md-6 col-sm-12 col-xs-12");
-									echo("<div class='fondo-gris1 rounded {$largoOfer}'>
-										<div id='oferta' class='oferta rounded'>
-											<h5 class='text-center mt-4'>{$fila[0]}</h5> 
-											<p style='margin:12px;' class='text-justify'>
-												{$fila[1]} 
-											</p>
-										</div>
-									</div>");
-								}
-								?>
+							<div class='fondo-gris1 rounded {$largoOfer}'>
+								
+							<div class="col-md-7 col-sm-12 mt-2 " id="vista">
 							</div>
 							<div class="col-md-5 mt-2 hidden-xs hidden-sm">
 								<!--nube de palabras-->

@@ -4,10 +4,8 @@ require_once("./motores/interno/conexion.php");
 require_once("./motores/interno/formatos.php");
 session_start();
 $hayUsuario = (isset($_SESSION['Usuario']) && !($_SESSION['Usuario']['rol'] == 't' || $_SESSION['Usuario']['rol'] == 'n'));
-if (!$hayUsuario) {
-	$_SESSION['Usuario'] = array("rol" => "t", "publica" => "invalida");
-	$dbcon = conectaDB();
-	?>
+$dbcon = conectaDB();
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -78,17 +76,7 @@ if (!$hayUsuario) {
 	<body class="">
 		<header>
 			<nav id="herramientas" class="navbar navbar-toggleable-md"  style="background-color: rgba(50, 47, 47, 0.73); height:120px;">
-				<!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#opciones" aria-controls="opciones" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<a class="navbar-brand" href="#"><img src="img/logo-small.png" alt="logo"></a>
-				<div id="opciones" class="collapse navbar-collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li class="nav-item"><a class="nav-link" href="registro.php">REGISTRARSE</a></li>
-						<li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#firmado">INICIAR SESIÓN</a></li>
-					</ul>
-				</div>-->
-				<?= dameMenuGeneral(); ?>
+				<?= ($hayUsuario ? dameMenuMigrante() : dameMenuGeneral()); ?>
 			</nav>
 		</header>
 		
@@ -190,9 +178,3 @@ if (!$hayUsuario) {
 		<script src="js/bootstrap.min.js"></script>
 	</body>
 </html>
-<?php
-} else {
-	header('Status: 301 Moved Permanently', false, 301);
-	header('Location: ./' . $_SESSION['Usuario']['pag_inicial']);
-}
-?>

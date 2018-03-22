@@ -26,10 +26,12 @@ $catalogo = new Catalogo('migrante', "P", null, "form-control");	//Sirve para cr
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
 		<!--CSS-->
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/personalizado.css" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 		<link rel="stylesheet" href="css/jquery-ui.min.css" />
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?&libraries=places&language=es&key=AIzaSyBWe3yPvnEk__zqa04SH0UlDqsjGG_TBWs"></script>
 		<?= $catalogo->getScripts(); ?>
 		<script type="text/javascript">
 			function agregaRegistro() {
@@ -67,43 +69,55 @@ $catalogo = new Catalogo('migrante', "P", null, "form-control");	//Sirve para cr
 			}
 			function inicia() {
 				edita(<?= $_SESSION['Usuario']['id'] ?>);
+				preparaMapa();
+			}
+			function preparaMapa() {
+				creaMapa_<?= $catalogo->getPrefijo() ?>();
+				creaPunto_<?= $catalogo->getPrefijo() ?>();
 			}
 		</script>
 	</head>
 	<body onload="inicia()">
 		<header>
-			<nav id="herramientas" class="navbar navbar-toggleable-md navbar-light bg-faded">
-				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#opciones" aria-controls="opciones" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<a class="navbar-brand" href="#"><img src="img/logo-small.png" alt="logo"></a>
-				<div id="opciones" class="collapse navbar-collapse">
-					<?= dameMenuMigrante(); ?>
-				</div>
+			<nav id="herramientas" class="navbar navbar-toggleable-md"  style="background-color: rgba(50, 47, 47, 0.73); height:120px;">
+				<?= dameMenuMigrante(); ?>
 			</nav>
 		</header>
-		<div class="container">
-			<div class="row" >
-				<div class="col-md-12">
-					<form id="frmAlta">
-						<table>
-							<?= $catalogo->comoTabla(); ?>
-						</table>
-						<input type="hidden" id="ae" name="ae"  />
-						<input type="hidden" id="r" name="r" value="landing.php" />
-						<a href="#" onclick="agregaRegistro()" class="btn btn-success">¡Guardar cambios!</a>
-						<a href="baja.php" class="btn btn-error">Borrar mi cuenta</a>
-					</form>
+		<!-- Intro Section -->
+		<section class="intro" style="background-image: url(img/fondo2.jpg); min-height: 60%;"></section>
+		</section>
+		<section style="position: absolute; z-index:1; min-width:100%;">
+			<div class="container" style=" margin-top:30px;">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<div class="row rounded fondo-gris1">
+							<div class=" rounded" style="width: 100%;background-color: rgba(50, 47, 47, 0.73); margin:8px;">
+								<div class="col-md-12 col-sm-12" style="margin-top:40px;">
+									<h3 style="color:#eaa704;">Perfil de usuario</h3>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="fondo-gris1 rounded col-md-12">
+								<div class="oferta rounded">
+									<form id="frmAlta" style="padding: 12px;">
+										<table>
+											<?= $catalogo->comoTabla(); ?>
+										</table>
+										<input type="hidden" id="ae" name="ae"  />
+										<input type="hidden" id="r" name="r" value="landing.php" />
+										<a href="#" onclick="agregaRegistro()" class="btn btn-success">¡Guardar cambios!</a>
+										<a href="baja.php" class="btn btn-error">Borrar mi cuenta</a>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-		<!-- Footer -->
-		<footer>
-			<div class="row">
-				<div class="col-lg-12">
-					<p>2018 &copy; Datametrix </p>
-				</div>
-			</div>
+		</section>
+		<footer class="text-center fixed-bottom" style="background-color: rgba(50, 47, 47, 0.73); height: 30px;">
+			<p>©Datametrix 2018</p>
 		</footer>
 		<script src="js/popper.js"></script>
 		<script src="js/bootstrap.min.js"></script>

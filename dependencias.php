@@ -4,10 +4,8 @@ require_once("./motores/interno/conexion.php");
 require_once("./motores/interno/formatos.php");
 session_start();
 $hayUsuario = (isset($_SESSION['Usuario']) && !($_SESSION['Usuario']['rol'] == 't' || $_SESSION['Usuario']['rol'] == 'n'));
-if (!$hayUsuario) {
-	$_SESSION['Usuario'] = array("rol" => "t", "publica" => "invalida");
-	$dbcon = conectaDB();
-	?>
+$dbcon = conectaDB();
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -88,7 +86,7 @@ if (!$hayUsuario) {
 						<li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#firmado">INICIAR SESIÓN</a></li>
 					</ul>
 				</div>-->
-				<?= dameMenuGeneral(); ?>
+				<?= ($hayUsuario ? dameMenuMigrante() : dameMenuGeneral()); ?>
 			</nav>
 		</header>
 		
@@ -189,9 +187,3 @@ if (!$hayUsuario) {
 		<script src="js/bootstrap.min.js"></script>
 	</body>
 </html>
-<?php
-} else {
-	header('Status: 301 Moved Permanently', false, 301);
-	header('Location: ./' . $_SESSION['Usuario']['pag_inicial']);
-}
-?>

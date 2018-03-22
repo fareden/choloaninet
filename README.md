@@ -13,16 +13,14 @@ CholoaniNET es un sistema para que empresas particulares así como particulares 
 Instrucciones de instalación
 
 Para los desesperados:
-```
-1. $ git clone ssh://migrantech@lab.achichincle.net:2242/hikuri/migrantech/
-2. $ nano migrantech/motores/interno/defs.php
-	Modifcar la constante DOMINIO al dominio desde el cual se ejecutará la aplicación.
-3. $ mysql -u root -p -e "create database migrantech;"
-4. $ mysql -u root -p -e "\. migrantech/modelodb.sql;" migrantech
-5. $ mysql -u root -p -e "grant insert, select, update, execute on migrantech.* to usrcholoani@'localhost' identified by 'ch0l04n1N3T2018';" 
-6. $ mysql -u root -p -e "call actualizaAccesos(1);" migrantech
+1. `$ git clone ssh://migrantech@lab.achichincle.net:2242/hikuri/migrantech/`
+2. `$ nano migrantech/motores/interno/defs.php`. <br/>
+	Modifcar la constante `DOMINIO` al dominio desde el cual se ejecutará la aplicación.
+3. `$ mysql -u root -p -e "create database migrantech;"`
+4. `$ mysql -u root -p -e "\. migrantech/modelodb.sql;" migrantech`
+5. `$ mysql -u root -p -e "grant insert, select, update, execute on migrantech.* to usrcholoani@'localhost' identified by 'ch0l04n1N3T2018';"` 
+6. `$ mysql -u root -p -e "call actualizaAccesos(1);" migrantech`
 7. disfrutar... :)
-```
 
 Pasos detallados:
 1. Clonar este proyecto en un directorio accesible para `www-data` o el manejador de Http que se esté usando, después en el directorio que se haya clonado el proyecto ejecutar.

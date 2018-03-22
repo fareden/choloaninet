@@ -8,6 +8,9 @@ CholoaniNET es un sistema para que empresas particulares así como particulares 
 * LSAfun
 * RMySQL 
 * MySql version 10.1.26
+* Bootstrap 4
+* Material.io icons
+* GoogleMaps API
 
 
 Instrucciones de instalación
@@ -31,9 +34,7 @@ Pasos detallados:
 6. El procedimiento almacenado `'actualizaAccesos()'` se encarga de proporcionar derechos de acceso a un usuario. Recibe como parámetro el ID de usuario y los usuarios se crean directamente en la tabla 'usuario'. Cabe señalar que el primer usuario que se use deberá tener un perfil `'3'`, y la seguridad final no será activada hasta después de terminar la implementación.
 7. Una vez terminado, debemos de poder acceder a la instalación nueva de la aplicación. A partir de este momento, en el punto donde cambiemos la constante de producción a `"TRUE"` activará las funciones de seguridad. Por lo que es necesario que se haga después de establecidos los roles.
 
-```
-$ php -i index.php
-```
+Se recommienda que se instalen manualmente las librerías de bootstrap y otras librerías JS adicionales
 
 
 

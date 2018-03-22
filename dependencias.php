@@ -102,39 +102,30 @@ if (!$hayUsuario) {
 				<div class="row">
 					<div class="col-md-12 col-sm-12">
 						<div class="row rounded fondo-gris1">
-							<div class=" rounded" style="background-color: rgba(50, 47, 47, 0.73); margin:8px;">
-								<div class="col-md-8 col-sm-12 col-md-offset-2" style="margin-top:40px;">
-									<img src="img/logo-largo.png" class="img-fluid">
-									<h3 class="text-center" style="color:#eaa704;">¡Bienvenid@!</h3>
-									<p class="text-white text-center">Ayudando a dar la bienvenida a nuestros talentos que regresan</p>
+							<div class=" rounded" style="width: 100%;background-color: rgba(50, 47, 47, 0.73); margin:8px;">
+								<div class="col-md-12 col-sm-12" style="margin-top:40px;">
+									<h3 style="color:#eaa704;">Directorio de dependencias</h3>
 								</div>
 							</div>
 						</div>
 						<div class="row" >
-							<div class="col-md-7 col-sm-12 mt-2 ">
+							<div class="col-md-12 col-sm-12 mt-2 ">
 								<?php
-								$qry = "select * from vt_ofertas_pub order by rand() limit 15;";
+								$qry = "select * from vc_directorio;";
 								$rs = $dbcon->query($qry);
-								while ($fila = $rs->fetch_row()) {
-									$largoOfer = (strlen($fila[1]) > 10 ? "col-md-12" : "col-md-6 col-sm-12 col-xs-12");
-									echo("<div class='fondo-gris1 rounded {$largoOfer}'>
-										<div id='oferta' class='oferta rounded'>
-											<h5 class='text-center mt-4'>{$fila[0]}</h5> 
-											<p style='margin:12px;' class='text-justify'>
-												{$fila[1]} 
-											</p>
-										</div>
-									</div>");
+								$campos = $rs->fetch_fields();
+								while ($fila = $rs->fetch_assoc()) {
+									//$largoOfer = (strlen($fila[1]) > 10 ? "" : "col-md-6 col-sm-12 col-xs-12");
+									echo("<div class='fondo-gris1 rounded col-md-12'>
+										<div id='oferta rounded' class='oferta'>
+											<h5 class='text-center mt-4'>{$fila['Nombre']}</h5><div class='row'>");
+									foreach ($campos as $cmp) {
+										if ($cmp->name != 'Nombre')
+											echo("<p class='col-md-3'>$cmp->name: <strong>{$fila[$cmp->name]}</strong></p>");
+									}
+									echo("</div></div></div>");
 								}
 								?>
-							</div>
-							<div class="col-md-5 mt-2 hidden-xs hidden-sm">
-								<!--nube de palabras-->
-								<div class="row">
-									<div class="col-md-12 col-sm-12  fondo-gris1 rounded" style="height:800px;">
-										<div id="nubePalabras" style="background:#fff;margin-top:10px;margin-bottom:10px; height:100%;" class="rounded"><span class="text-center">#nubePalabras</span></div>
-									</div>
-								</div>
 							</div>
 						</div>
 					</div>

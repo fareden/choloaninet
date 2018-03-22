@@ -1,5 +1,8 @@
 <?php
 session_start();
+require_once("./motores/interno/defs.php");
+require_once("./motores/interno/conexion.php");
+require_once("./motores/interno/formatos.php");
 require_once("./motores/interno/funciones.php");
 require_once("./motores/interno/MasterCat.class.php");
 //require_once("./motores/interno/validador.php");
@@ -9,16 +12,25 @@ $migrante = new Catalogo("migrante", "P", null, "form-control");
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Nuevo usuario -- Zenbakia</title>
-		<link rel="stylesheet" href="js/jquery-ui.min.css" />
-		<!--CSS-->
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-		<link rel="stylesheet" type="text/css" href="css/personalizado.css" />
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>	
+		<title><?= NOMBRE_APLICACION ?></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+		<meta charset="utf-8">
+		<!-- SEO Meta Tags -->
+		<meta name="description" content="Descripción" />
+		<meta name="keywords" content="Palabras Clave" />
+		<meta name="author" content="CarpathiaLab" />
 
+		<!-- Mobile Specific Meta Tag -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<!-- Favicon Icon -->
 		<script src="js/jquery.min.js"></script>
 		<script src="js/jquery-ui.min.js"></script>
+		<!--CSS-->
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/personalizado.css" />
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+		<link rel="stylesheet" href="css/jquery-ui.min.css" />
 		<script type="text/javascript">
 			function validapwd() {
 				txtPwd = document.getElementById('p1');
@@ -78,20 +90,47 @@ $migrante = new Catalogo("migrante", "P", null, "form-control");
 			}
 		</script>
 	</head>
-	<body>
-		<div class="container">
-			<div class="row" >
-				<div id="agregaFotografo" tabindex="-1">
-					<div class="fondo">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close limpia" data-dismiss="modal">&times;</button>
-								<h4 class="modal-title">Por favor proporciona los siguientes datos</h4>
+	<body class="">
+		<header>
+			<nav id="herramientas" class="navbar navbar-toggleable-md"  style="background-color: rgba(50, 47, 47, 0.73); height:120px;">
+				<!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#opciones" aria-controls="opciones" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<a class="navbar-brand" href="#"><img src="img/logo-small.png" alt="logo"></a>
+				<div id="opciones" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="nav-item"><a class="nav-link" href="registro.php">REGISTRARSE</a></li>
+						<li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#firmado">INICIAR SESIÓN</a></li>
+					</ul>
+				</div>-->
+				<?= dameMenuGeneral(); ?>
+			</nav>
+		</header>
+		
+		<!-- Intro Section -->
+		<section class="intro" style="background-image: url(img/fondo2.jpg); min-height: 60%;"></section>
+			
+		</section>
+		<!-- Intro Section End -->
+		<section style="position: absolute; z-index:1; min-width:100%;">
+			<div class="container" style=" margin-top:30px;">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<div class="row rounded fondo-gris1">
+							<div class=" rounded" style="width: 100%;background-color: rgba(50, 47, 47, 0.73); margin:8px;">
+								<div class="col-md-12 col-sm-12" style="margin-top:40px;">
+									<center>
+										<h3 style="color:#eaa704;">¡Regístrate!</h3>
+										<h4>Por favor proporciona los siguientes datos</h4>
+									</center>
+								</div>
 							</div>
-							<div class="modal-body">
+						</div>
+						<div class="row" >
+							<div class="col-md-12 col-sm-12 mt-2 ">
 								<div id="mensaje"></div>
-								<div id="forma">
-									<form id="frmAlta" autocomplete="off">
+								<div id="forma" style="" class="fondo-gris1 rounded">
+									<form id="frmAlta" autocomplete="off" class="oferta rounded">
 										<table border="0">
 											<tbody>
 												<tr>
@@ -141,8 +180,6 @@ $migrante = new Catalogo("migrante", "P", null, "form-control");
 										<input type="hidden" name="alta" value="123jklsdjfkl23j4sfQWAAsdFD" />
 									</form>
 								</div>
-							</div>
-							<div class="modal-footer">
 								<button type="button" class="limpia btn btn-default " onclick="window.history.back(1);">Cancelar</button>
 								<a href="javascript:void(0)" class="btn btn-primary" onclick="agregaRegistro()">Agregar</a>
 							</div>
@@ -150,7 +187,10 @@ $migrante = new Catalogo("migrante", "P", null, "form-control");
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
+		<footer class="text-center fixed-bottom" style="background-color: rgba(50, 47, 47, 0.73); height: 30px;">
+			<p>©Datametrix 2018</p>
+		</footer>
 		<script src="js/popper.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/plugins/jquery.magnific-popup.min.js"></script>

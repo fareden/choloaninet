@@ -25,4 +25,24 @@ function dameMenuMigrante() {
 	</ul>';
 	return $retval;
 }
+function dameMenuGeneral() {
+	$retval = '<div class="container">
+		<div class="col-md-4 col-sm-12 col-xs-12">
+			<a class="navbar-brand" href="#"><img src="img/logo-small.png" alt="logo"></a>
+		</div>
+		<div class="col-md-2 col-sm-6">
+			<a class="text-white pull-right hidden-xs hidden-sm" href="noticias.php">NOTICIAS</a>
+		</div>
+		<div class="col-md-2 col-sm-6">
+			<a class="text-white pull-right hidden-xs hidden-sm" href="dependencias.php">DIRECTORIO</a>
+		</div>
+		<div class="col-md-2 col-sm-6">
+			<a class="text-white pull-right hidden-xs hidden-sm" href="registro.php">REGISTRARSE</a>
+		</div>
+		<div class="col-md-2 col-sm-6">
+			<a class="text-white pull-right " href="#" data-toggle="modal" data-target="#firmado">INICIAR SESIÓN</a>
+		</div>
+	</div>';
+	return $retval;
+}
 ?>

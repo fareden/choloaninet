@@ -8,11 +8,11 @@ define("DOMINIO", "https://lab.achichincle.net", false);
 define("MOVILAPP", "file:///", false);
 define("SUBIDAS", "/var/tmp/", false);
 define("PAG_DEFAULT", "./index.php", false);
-define("CORREO_ORIGEN", "Pruebas Carpathia <carpathiapruebas@gmail.com>", FALSE);
-define("CORREO_SERVIDOR", "ssl://smtp.gmail.com", FALSE);
-define("CORREO_USUARIO", "carpathiapruebas@gmail.com", FALSE);
-define("CORREO_PASSWD", "orgon2016", FALSE);
-define("CORREO_PUERTO", "465", FALSE);
+define("CORREO_ORIGEN", "", FALSE);
+define("CORREO_SERVIDOR", "", FALSE);
+define("CORREO_USUARIO", "", FALSE);
+define("CORREO_PASSWD", "", FALSE);
+define("CORREO_PUERTO", "", FALSE);
 define("NOMBRE_APLICACION", "CholoaniNET", FALSE);
 
 //TODO El ejército Cuadrumano es un arreglo con las posibles implementaciones de hanumat en diferentes servidores.
